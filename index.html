@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 1</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <script src="js/script.js"> </script> -->
 <script>
    
@@ -38,10 +39,11 @@
                         <button  class="button button4" value="9">9</button>
                         <button  class="button" value="0">0</button>
                         <button  class="button button2" id="del" value="del" >del</button>
-                        <button  class="button" id="submit" value="submit">submit</button><br>
-                        <button  class="button button4" value="clear" >clear</button>
+                        <button  class="button btnsubmit" id="submit" value="submit">submit</button><br>
+                        <button  class="button button4" id="clr" value="clear" >clear</button>
                     </div>
                     <div class="alert">
+                        <i class="fa fa-close" id="icon1" style="font-size:48px;color:red"></i>
                         <span class="closebtn" id="ok" onclick="this.parentElement.style.display='none';">&times;</span> 
                         <strong></strong> 
                       </div>
@@ -65,7 +67,7 @@
       }
 
         let buttons = document.querySelectorAll('button');
-        let realTimeScreenValue = ['']
+        let realTimeScreenValue = []
         let answerScreen = document.querySelector('.answerScreen');
         let currentInput = document.querySelector('.displayScreen');
        // console.log(document.getElementById("#pin").value);
@@ -75,18 +77,21 @@
   
    btn.addEventListener("click", () => {
     // when clicked button is not erased button 
-    if (!btn.id.match('submit')) {
+    if ((!btn.id.match('submit')) && (!btn.id.match('del')) && (!btn.id.match('clr'))) {
         // To display value on btn press
         console.log(btn.value);
-        realTimeScreenValue.push(btn.value)
+        if(!btn.value==''){
+          realTimeScreenValue.push(btn.value)
        // document.getElementById('#displayScreen').innerText = btn.value;
         currentInput.value = realTimeScreenValue.join('');
+        }
+       
         // To evaluate answer in real time
-         if (btn.classList.contains('button')) {
+        //  if (btn.classList.contains('button')) {
 
-          currentInput.value = eval(realTimeScreenValue.join(''));
+        //    currentInput.value = eval(realTimeScreenValue.join(''));
 
-         }
+        //  }
         }
 
        
@@ -96,15 +101,23 @@
             currentInput.value = eval(realTimeScreenValue.join(''));
         }
         if (btn.id.match('submit')) {
-           if(realTimeScreenValue==document.getElementById("pin").innerHTML){
+         // let array1[]=document.getElementById("pin").innerHTML
+           if((realTimeScreenValue.toString().replaceAll(',',''))==document.getElementById("pin").innerHTML){
             document.getElementById("ok").innerHTML="match key"
+            document.getElementById("icon1").className="fa fa-check";
+            var iconsuccc=document.getElementById("icon1");
+              iconsuccc.classList.add("iconsucess");
            }
            else{
             document.getElementById("ok").innerHTML="not match key"
            }
-            //console.log(realTimeScreenValue1);
+            console.log(realTimeScreenValue.toString().replaceAll(',',''));
+            console.log(document.getElementById("pin").innerHTML)
         }
-
+        if (btn.id.match('clr')) {
+            realTimeScreenValue=[];
+            currentInput.value = 0;
+        }
         if (typeof eval(realTimeScreenValue.join('')) == 'undefined') {
             currentInput.value = 0
         }
