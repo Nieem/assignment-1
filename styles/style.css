@@ -1,9 +1,162 @@
-.open-sans-normal {
+ .open-sans-normal {
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
     font-variation-settings:
       "wdth" 100;
+  } 
+  * {
+    box-sizing: border-box;
   }
   
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* font-size: 30px; */
+    
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .flex-item-left {
+    background-color: #302929;
+    height: 400px;
+    margin: 2px;
+    padding: 10px;
+    flex: 48%;
+  }
+  
+  .flex-item-right {
+    background-color: rgb(35, 36, 37);
+    color: #efe5e5;
+    height: auto;
+    margin: 2px;
+    padding: 10px;
+    display: flex;
+    flex: 48%;
+    flex-wrap: wrap;
+
+  }
+  .button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  .column {
+    margin-top: 5%;
+    flex: 100%;
+    max-width: 100%;
+    padding: 0 4px;
+  }
+  .btnkeygen {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .btnkeygen1 {width: 250px;border-radius:4px;margin-top: 100px;}
+  .btnkeygen2 {width: 250px;border-radius:4px;margin-top: 2px;}
+  
+  input[type=text] {
+    /* width: 100%; */
+    height: 30px;
+    align-items: center;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+  }
+  
+  input[type=text]:focus {
+    background-color: lightblue;
+  }
+
+  .keypad{
+    width: 100%;
+  }
+
+   .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+ 
+  
+  /* Responsive layout - makes a one column-layout instead of a two-column layout */
+  @media (max-width: 1000px) {
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+  }  
+  /* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+  }
+
+  @media (max-width: 800px) {
+    .column {
+      flex: 50%;
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 600px) {
+    .column {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+  @media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+  }
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+    .lblpintxt{
+        width: 100%;
+        /* align-items: center; */
+        /* margin-left: 15%; */
+    }
+  }
