@@ -7,77 +7,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 1</title>
     <link rel="stylesheet" href="styles/style.css">
-    <script src="js/script.js"> </script>
-
+    <!-- <script src="js/script.js"> </script> -->
+<script>
+   
+</script>
 </head>
 
 <body class="open-sans-normal">
     <main> 
         <div class="flex-container">
             <div class="flex-item-left">
+                
+
                 <button class="btnkeygen btnkeygen1" onclick="generatePin()">Generate secret key</button> <br>
-                <button id="pin" class="btnkeygen btnkeygen2">987645</button>
+                <button id="pin" class="btnkeygen btnkeygen2">******</button>
             </div>
             <div class="flex-item-right">                  
                       <div class="column">
                         <label for="" style="flex: 50%;">Enter pin</label>
-                        <input type="text" id="fname" name="fname" value="" style="flex-grow: 3;"><br>
-                        <button class="button">1</button>
-                        <button type="button" class="button button2" >1</button>
-                        <button type="button" class="button button3" >2</button>
-                        <button type="button" class="button button4" >3</button><br>
-                        <button type="button" class="button button5" >4</button>
-                        <button  type="button" class="button">1</button>
-                        <button type="button" class="button button2" >1</button>
-                        <button type="button" class="button button3" >2</button><br>
-                        <button type="button" class="button button4" >3</button>
-                        <button type="button" class="button">1</button>
-                        <button type="button" class="button button2" >1</button>
-                        <button type="button" class="button button3" >2</button><br>
-                        <button type="button" class="button button4" >3</button>
+                        <input type="text" class="displayScreen" name="fname" value="" style="flex-grow:3;"><br>
+                        <!-- <input type="text" class="answerScreen" name="fname" value="" style="flex-grow:3;"><br> -->
+                        <button  class="button" value="1">1</button>
+                        <button  class="button button2" value="2">2</button>
+                        <button  class="button button3" value="3">3</button>
+                        <button  class="button button4" value="4" >4</button><br>
+                        <button  class="button button5" value="5">5</button>
+                        <button   class="button" value="6">6</button>
+                        <button  class="button button2" value="7" >7</button>
+                        <button  class="button button3" value="8" >8</button><br>
+                        <button  class="button button4" value="9">9</button>
+                        <button  class="button" value="0">0</button>
+                        <button  class="button button2" id="del" value="del" >del</button>
+                        <button  class="button" id="submit" value="submit">submit</button><br>
+                        <button  class="button button4" value="clear" >clear</button>
                     </div>
                     <div class="alert">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                        <span class="closebtn" id="ok" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong></strong> 
                       </div>
-                    <!-- <div id="display">
-                        <div id=output-display class="output-display-css">0</div>
-                        <div id=input-display class="input-display-css">0</div>
-                    </div>
-            
-                    <button id="clear">AC</button>
-                    <button id="delete">DEL</button>
-                    <button class="operator-button operator" id="divide" >÷</button>
-                    <button class="number-button" id="seven">7</button>
-                    
-                    <button class="number-button" id="eight">8</button>
-                    <button class="number-button" id="nine">9</button>
-                    <button class="operator-button operator" id="multiply" >×</button>
-                    
-                    <button class="number-button" id="four">4</button>
-                    <button class="number-button" id="five">5</button>
-                    <button class="number-button" id="six">6</button>
-                    <button class="operator-button operator" id="add">+</button>
-                    
-                    <button class="number-button" id="one">1</button>
-                    <button class="number-button" id="two">2</button>
-                    <button class="number-button" id="three">3</button>
-                    <button class="operator-button operator" id="subtract">−</button>
-                    <button class="number-button" id="zero">0</button>  
-                    
-                    
-            
-                    <button id="equals" class="operator">=</button>
-                    <button class="number-button" id="decimal">.</button>
-                    
-                   
-            
-             -->
-                    
-                
+           
             </div>
           </div>
     </main>
+    <script>
+        // const nodeList = document.querySelectorAll(".button");
+        // console.log(nodeList);
+        // for (let i = 0; i < nodeList.length; i++) {
+        //   nodeList[i].style.backgroundColor = "red";
+        // }
+
+        function generatePin(){
+          let pin=0;
+          pin=Math.floor(100000 + Math.random() * 900000);
+         // console.log(Math.floor(100000 + Math.random() * 900000));
+          document.getElementById("pin").innerHTML=pin;
+          console.log(document.getElementById("pin").innerHTML);
+      }
+
+        let buttons = document.querySelectorAll('button');
+        let realTimeScreenValue = ['']
+        let answerScreen = document.querySelector('.answerScreen');
+        let currentInput = document.querySelector('.displayScreen');
+       // console.log(document.getElementById("#pin").value);
+
+        buttons.forEach((btn) => {
+          
+  
+   btn.addEventListener("click", () => {
+    // when clicked button is not erased button 
+    if (!btn.id.match('submit')) {
+        // To display value on btn press
+        console.log(btn.value);
+        realTimeScreenValue.push(btn.value)
+       // document.getElementById('#displayScreen').innerText = btn.value;
+        currentInput.value = realTimeScreenValue.join('');
+        // To evaluate answer in real time
+         if (btn.classList.contains('button')) {
+
+          currentInput.value = eval(realTimeScreenValue.join(''));
+
+         }
+        }
+
+       
+         if (btn.id.match('del')) {
+            realTimeScreenValue.pop();
+            currentInput.value = realTimeScreenValue.join('');
+            currentInput.value = eval(realTimeScreenValue.join(''));
+        }
+        if (btn.id.match('submit')) {
+           if(realTimeScreenValue==document.getElementById("pin").innerHTML){
+            document.getElementById("ok").innerHTML="match key"
+           }
+           else{
+            document.getElementById("ok").innerHTML="not match key"
+           }
+            //console.log(realTimeScreenValue1);
+        }
+
+        if (typeof eval(realTimeScreenValue.join('')) == 'undefined') {
+            currentInput.value = 0
+        }
+
+    });
+  }); 
+
+      </script>
+  
           
 </body>
 
