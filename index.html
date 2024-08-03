@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 1</title>
     <link rel="stylesheet" href="styles/style.css">
+    <script src="js/script.js"> </script>
 
 </head>
 
@@ -14,28 +15,31 @@
     <main> 
         <div class="flex-container">
             <div class="flex-item-left">
-                <button class="btnkeygen btnkeygen1">Generate secret key</button> <br>
-                <button class="btnkeygen btnkeygen2">987645</button>
+                <button class="btnkeygen btnkeygen1" onclick="generatePin()">Generate secret key</button> <br>
+                <button id="pin" class="btnkeygen btnkeygen2">987645</button>
             </div>
             <div class="flex-item-right">                  
                       <div class="column">
                         <label for="" style="flex: 50%;">Enter pin</label>
                         <input type="text" id="fname" name="fname" value="" style="flex-grow: 3;"><br>
                         <button class="button">1</button>
-                        <button class="button button2" >1</button>
-                        <button class="button button3" >2</button>
-                        <button class="button button4" >3</button><br>
-                        <button class="button button5" >4</button>
-                        <button class="button">1</button>
-                        <button class="button button2" >1</button>
-                        <button class="button button3" >2</button><br>
-                        <button class="button button4" >3</button>
-                        <button class="button">1</button>
-                        <button class="button button2" >1</button>
-                        <button class="button button3" >2</button><br>
-                        <button class="button button4" >3</button>
+                        <button type="button" class="button button2" >1</button>
+                        <button type="button" class="button button3" >2</button>
+                        <button type="button" class="button button4" >3</button><br>
+                        <button type="button" class="button button5" >4</button>
+                        <button  type="button" class="button">1</button>
+                        <button type="button" class="button button2" >1</button>
+                        <button type="button" class="button button3" >2</button><br>
+                        <button type="button" class="button button4" >3</button>
+                        <button type="button" class="button">1</button>
+                        <button type="button" class="button button2" >1</button>
+                        <button type="button" class="button button3" >2</button><br>
+                        <button type="button" class="button button4" >3</button>
                     </div>
-                    
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                      </div>
                     <!-- <div id="display">
                         <div id=output-display class="output-display-css">0</div>
                         <div id=input-display class="input-display-css">0</div>
